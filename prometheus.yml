@@ -5,4 +5,4 @@ scrape_configs:
   - job_name: 'node_backend'
     metrics_path: '/metrics'
     static_configs:
-      - targets: ['backend:5000']
+      - targets: ['student-management-system-q3u2.onrender.com:443']
