@@ -1,18 +1,20 @@
 # Use Node 18
 FROM node:18
 
-# Set working directory inside container
-WORKDIR /app/backend
+# Set working directory
+WORKDIR /app
 
-# Copy backend package files and install dependencies
-COPY backend/package*.json ./
+# Copy package.json & package-lock.json (from root)
+COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy all backend code
-COPY backend/ ./
+# Copy all files (backend + frontend)
+COPY . .
 
-# Expose port used by backend
+# Expose port
 EXPOSE 5000
 
-# Run the server
-CMD ["node", "server.js"]
+# Start the server
+CMD ["node", "backend/server.js"]
