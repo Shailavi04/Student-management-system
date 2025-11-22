@@ -2,19 +2,19 @@
 FROM node:18
 
 # Set working directory
-WORKDIR /app/backend
+WORKDIR /app
 
-# Copy package.json & package-lock.json
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy all files
+# Copy the backend code
 COPY . .
 
-# Expose backend port
+# Expose port
 EXPOSE 5000
 
-# Start the server
-CMD ["node", "backend/server.js"]
+# Start server
+CMD ["node", "server.js"]
