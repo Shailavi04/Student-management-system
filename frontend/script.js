@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/students";
+const API_URL = "https://student-management-system-q3u2.onrender.com/students";
 
 // Load students and render table
 async function loadStudents() {
