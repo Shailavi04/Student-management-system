@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: student-mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: studentdb
+    ports:
+      - "27018:27017"  # Host port 27018 → Container port 27017
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: student-backend
+    image: student-backend:local
+    ports:
+      - "5001:5000"   # Host port 5001 → Container port 5000
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/studentdb  # Connect to mongo container
+    depends_on:
+      - mongo
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+
+volumes:
+  mongo-data:
