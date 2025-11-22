@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_URI)
     });
 
 // Serve frontend files
-// app.use(express.static(path.join(__dirname, "../frontend"))); 
+app.use(express.static(path.join(__dirname, "../frontend"))); 
 
 const client = require('prom-client');
 client.collectDefaultMetrics({ timeout: 5000 });
@@ -88,10 +88,10 @@ app.delete("/students/:id", async (req, res) => {
     }
 });
 
-// Serve index.html for root
-// app.get("/", (req, res) => {
-//     res.sendFile(path.join(__dirname, "../frontend/index.html"));
-// });
+ //Serve index.html for root
+ app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+ });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
