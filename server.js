@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const path = require("path");
 const Student = require("./models/Student");
 require('dotenv').config();
-const path = require("path");
 
 
 
@@ -26,7 +25,7 @@ mongoose.connect(process.env.MONGO_URI)
     });
 
 // Serve frontend files
-app.use(express.static(path.join(__dirname, "/frontend"))); 
+app.use(express.static(path.join(__dirname, "frontend"))); 
 
 const client = require('prom-client');
 client.collectDefaultMetrics({ timeout: 5000 });
