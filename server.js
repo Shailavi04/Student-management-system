@@ -3,7 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
 const Student = require("./models/Student");
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config();
 
 
 const app = express();
