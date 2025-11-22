@@ -4,16 +4,16 @@ FROM node:18
 # Set working directory
 WORKDIR /app
 
-# Copy package.json & package-lock.json (from root)
+# Copy package.json & package-lock.json
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy all files (backend + frontend)
+# Copy all files
 COPY . .
 
-# Expose port
+# Expose backend port
 EXPOSE 5000
 
 # Start the server
