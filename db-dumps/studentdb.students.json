@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "691a127f8a99b81b7f4a2ab3"
+  },
+  "name": "Shailavi Srivastava",
+  "age": 21,
+  "course": "web dev",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691a142aabd15e5ac206a6c0"
+  },
+  "name": "Shivangi Pandey",
+  "age": 21,
+  "course": "Data Engineer",
+  "__v": 0
+}]
